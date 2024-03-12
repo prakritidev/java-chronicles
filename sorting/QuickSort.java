@@ -11,13 +11,10 @@ public class QuickSort {
     }
 
     private static void sort(List<Integer> input) {
-        // TODO Auto-generated method stub
         quicksort(input, input.size()-1);
-        // return input;
     }
 
     private static void quicksort(List<Integer> input, int i) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'quicksort'");
     }
 }

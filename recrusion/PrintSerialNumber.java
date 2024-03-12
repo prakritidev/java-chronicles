@@ -2,7 +2,6 @@ package recrusion;
 
 public class PrintSerialNumber {
     public static void main(String[] args) {
-        int n = 4;
         func(1, 4);
     }
 
