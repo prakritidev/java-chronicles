@@ -1,6 +1,5 @@
 package arrays.easy;
 
-import java.util.List;
 
 public class TargetSumK {
     public static void main(String[] args) {
@@ -8,6 +7,7 @@ public class TargetSumK {
         int target = 5;
 
         int[] respose = getData(arr, target);
+        System.out.println(respose);
     }
 
     private static int[] getData(int[] arr, int target) {
