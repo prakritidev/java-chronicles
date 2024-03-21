@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class RearrangeArrayBySign {
     public static void main(String[] args) {
-        List<Integer> input = Arrays.asList(1,2,-4,-5);
+        List<Integer> input = Arrays.asList(1,2,-3,-1,-2,3);
         System.out.println(getRearranged(input));
     }
 
@@ -15,19 +15,32 @@ public class RearrangeArrayBySign {
         List<Integer> postive = input.stream().filter(num -> num > 0).collect(Collectors.toList());
         List<Integer> negative =  input.stream().filter(num -> num < 0).collect(Collectors.toList());
 
-        // Boolean flip = true;
-        // int i = 0, j = 0;
-        // while(i < postive.size() && negative){
-        //     if (flip) {
-        //         int data = postive.get(i);
-        //     } else {
-                
-        //     }
-        //     input.set(i, data);
-        // }
-
+        List<Integer> result = new ArrayList<>();
         
+        int i = 0, j = 0, k = 0;
 
-        return input;
+        Boolean flip = true;
+
+        while(i < postive.size() || j < negative.size()){
+            if (flip) {
+                result.add(k, postive.get(i)); 
+                k++;
+                i++;
+                               
+            } else {
+                result.add(k, negative.get(j));
+                k++;
+                j++;
+            }
+            flip = !flip;
+        }
+
+        while (i < postive.size()) {
+            result.addAll(postive);
+        }
+        while (i < postive.size()) {
+            result.addAll(negative);
+        }
+        return result;
     }
 }
