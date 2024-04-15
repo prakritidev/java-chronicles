@@ -1,4 +1,4 @@
-package binarysearch.onanswers;
+package binarysearch.bsonanswers;
 
 public class FindSquareRoot {
     public static void main(String[] args) {
