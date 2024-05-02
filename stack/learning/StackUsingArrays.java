@@ -1,10 +1,10 @@
 package stack.learning;
 
-class Stack {
+class Stacking {
     int[] arr;
     int pointer = -1;
 
-    Stack(int capacity) {
+    Stacking(int capacity) {
         this.arr = new int[capacity];
     }
 
@@ -31,7 +31,7 @@ class Stack {
 
 public class StackUsingArrays {
     public static void main(String[] args) {
-        Stack stack = new Stack(50);
+        Stacking stack = new Stacking(50);
         stack.push(1);
         stack.push(2);
         stack.push(3);
