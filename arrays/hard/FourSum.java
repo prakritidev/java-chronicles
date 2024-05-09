@@ -53,8 +53,6 @@ public class FourSum {
                 }
             }
         }
-
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'fourSum'");
+        return null;
     }
 }
