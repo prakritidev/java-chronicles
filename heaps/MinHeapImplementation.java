@@ -1,4 +1,5 @@
-package heaps;
+
+import java.util.*;
 
 public class MinHeapImplementation {
   private int capacity = 10;
@@ -8,7 +9,7 @@ public class MinHeapImplementation {
 
   private int getLeftChildIndex(int parentIndex) { return 2 * parentIndex + 1; } 
   private int getRightChildIndex(int parentIndex) { return 2 * parentIndex + 2; }
-  private int getParentIndex(int parentIndex) { return (childIndex-1); }
+  private int getParentIndex(int childIndex) { return (childIndex-1); }
 
   private boolean hasLeftChild(int index) {return getLeftChildIndex(index) < size; }
   private boolean hasRightChild(int index) {return getRightChildIndex(index) < size; }
@@ -31,14 +32,14 @@ public class MinHeapImplementation {
     }
   }
 
-  public int peek() {
-    if(size == 0) throw new IllegalExceptionError();
+  public int peek() throws Exception {
+    if(size == 0) throw new Exception();
     return items[0];
   }
 
-  public int poll() {
-    if(size == 0) throw new IllegalExceptionError();
-    int item = item[0];
+  public int poll() throws Exception {
+    if(size == 0) throw new Exception();
+    int item = items[0];
     items[0] = items[size-1];
     size--;
     heapifyDown();
@@ -49,6 +50,7 @@ public class MinHeapImplementation {
     items[size] = item;
     size++;
     heapifyUp();
+    return item;
   }
 
   public void heapifyUp() {
@@ -65,7 +67,7 @@ public class MinHeapImplementation {
       if(hasRightChild(index) && rightChild(index) < leftChild(index)) smallerChildIndex=getRightChildIndex(index);
       if(items[index] < items[smallerChildIndex]) break;
       else swap(index, smallerChildIndex);
-      index = smallerChildIndexl
+      index = smallerChildIndex;
     }
   }
   public static void main(String[] args) {
