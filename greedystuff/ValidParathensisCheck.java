@@ -1,4 +1,4 @@
-package greedy;
+package greedystuff;
 
 public class ValidParathensisCheck {
   public static void main(String[] args) {
