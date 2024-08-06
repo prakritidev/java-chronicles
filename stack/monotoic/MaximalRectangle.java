@@ -1,4 +1,4 @@
-package stack.monotonic;
+package stack.monotoic;
 
 import java.util.ArrayList;
 
