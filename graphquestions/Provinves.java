@@ -1,46 +1,58 @@
 package graphquestions;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * Provinves
  */
 public class Provinves {
 
-    public static void main(String[] args) {
-        ArrayList<ArrayList<Integer> > adj = new ArrayList<ArrayList<Integer> >();
+    private Map<Integer, List<Integer>> adjList = new HashMap<>();
+    Set<Integer> visited = new HashSet<>();
+    Integer answer = 0;
 
-        adj.add(new ArrayList<Integer>());
-        adj.get(0).add(0, 1);
-        adj.get(0).add(1, 0);
-        adj.get(0).add(2, 1);
-
-        adj.add(new ArrayList<Integer>());
-        adj.get(1).add(0, 0);
-        adj.get(1).add(1, 1);
-        adj.get(1).add(2, 0);
-
-        adj.add(new ArrayList<Integer>());
-        adj.get(2).add(0, 1);
-        adj.get(2).add(1, 0);
-        adj.get(2).add(2, 1);
-                
-        Provinves ob = new Provinves();
-        System.out.println(ob.numProvinces(adj,3));
+    private void addNode(Integer source, Integer destination) {
+        adjList.computeIfAbsent(source, k -> new ArrayList<>()).add(destination);
+        adjList.computeIfAbsent(destination, k -> new ArrayList<>()).add(source);
     }
 
-    private char[] numProvinces(ArrayList<ArrayList<Integer>> adj, int vertices) {
-        HashSet<Integer> cache = new HashSet<>();
-        Integer count = 0;
-        for (ArrayList<Integer> row : adj) {
-            dfs(row, cache);
+    private void dfs(int node) {
+        if (!visited.contains(node)) {
+            answer++;
+            dsfRecusive(node, visited);
+            
         }
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'numProvinces'");
     }
 
-    private void dfs(ArrayList<Integer> adj, HashSet<Integer> cache) {
+    private void dsfRecusive(int node, Set<Integer> visited) {
+        if (!visited.contains(node)) {
+            return;
+        }
+        visited.add(node);
+        System.out.println("Visited node: " + node);
+        for (int neighbor : adjList.getOrDefault(node, new ArrayList<>())) {
+            dsfRecusive(neighbor, visited);
+        }
+    }
 
+    public static void main(String[] args) {
+        Provinves provinves = new Provinves();
+
+        provinves.addNode(0, 1);
+        provinves.addNode(1, 0);
+        provinves.addNode(2, 1);
+        provinves.addNode(0, 0);
+        provinves.addNode(1, 1);
+        provinves.addNode(2, 0);
+        provinves.addNode(0, 1);
+        provinves.addNode(1, 0);
+        provinves.addNode(2, 1);
+
+        for (Integer i : Arrays.asList(0, 1, 2)) {
+            if (!provinves.visited.contains(i)) {
+                provinves.dfs(i);
+            }
+        }
+        System.out.println("Answer" + provinves.answer);
     }
 }
