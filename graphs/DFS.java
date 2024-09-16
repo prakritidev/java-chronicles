@@ -1,4 +1,4 @@
-package graphquestions;
+package graphs;
 
 import java.util.*;
 
@@ -26,6 +26,10 @@ public class DFS {
         for (int neighbor : adjList.getOrDefault(node, new ArrayList<>())) {
             dsfRecusive(neighbor, visited);
         }
+    }
+
+    private void dfs(){
+         
     }
 
     public static void main(String[] args) {

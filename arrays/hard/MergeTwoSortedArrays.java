@@ -1,7 +1,8 @@
+
 import java.util.Arrays;
 
 public class MergeTwoSortedArrays {
-    
+
     public static void merge(long[] arr1, long[] arr2, int n, int m) {
 
         // Declare 2 pointers:
@@ -43,6 +44,5 @@ public class MergeTwoSortedArrays {
         }
         System.out.println();
     }
-
 
 }
