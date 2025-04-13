@@ -1,3 +1,5 @@
+package arrays.hard;
+
 import java.util.Arrays;
 import java.util.*;
 
@@ -17,31 +19,31 @@ import java.util.*;
  * Fuck this was easy, but i was not able to see this pattern. Coundlt have solved this in an interview setting.
  */
 public class LongestSubArrayWithZeroSum {
-    public static void main(String[] args) {
-        List<Integer> input = Arrays.asList(9, -3, 3, -1, 6, -5);
-        System.out.println(getSolution(input));
-    }
+  public static void main(String[] args) {
+    List<Integer> input = Arrays.asList(9, -3, 3, -1, 6, -5);
+    System.out.println(getSolution(input));
+  }
 
-    public static Integer getSolution(List<Integer> input) {
-        Map<Integer, Integer> sumMap = new HashMap<>();
-        int sum = 0;
-        int maxLength = 0;
+  public static Integer getSolution(List<Integer> input) {
+    Map<Integer, Integer> sumMap = new HashMap<>();
+    int sum = 0;
+    int maxLength = 0;
 
-        for (int i = 0; i < input.size(); i++) {
-            sum += input.get(i);
+    for (int i = 0; i < input.size(); i++) {
+      sum += input.get(i);
 
-            if (sum == 0) {
-                maxLength = i + 1;
-            } else {
-                if (sumMap.containsKey(sum)) {
-                    maxLength = Math.max(maxLength, i - sumMap.get(sum));
-                } else {
-                    sumMap.put(sum, i);
-                }
-            }
-
+      if (sum == 0) {
+        maxLength = i + 1;
+      } else {
+        if (sumMap.containsKey(sum)) {
+          maxLength = Math.max(maxLength, i - sumMap.get(sum));
+        } else {
+          sumMap.put(sum, i);
         }
+      }
 
-        return maxLength;
     }
+
+    return maxLength;
+  }
 }
